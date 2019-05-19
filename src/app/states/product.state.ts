@@ -33,11 +33,8 @@ export class ProductState {
 	@Action(DeleteProduct)
 	delete({ getState, setState, patchState }: StateContext<ProductStateModel>, { payload }: DeleteProduct) {
 		const state = getState();
-		// patchState({
-		// 	products: state.products.splice(payload.id, 1)
-		// });
 		const filteredArray = state.products.filter(item => item.id !== payload.id);
-		setState({
+		patchState({
 			...state,
 			products: filteredArray,
 		});
