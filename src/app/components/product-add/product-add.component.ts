@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // state management setup
 import { Store } from '@ngxs/store';
-import { AddProduct } from '../actions/product.action';
+import { AddProduct } from '../../actions/product.action';
 
 @Component({
 	selector: 'app-product-add',
