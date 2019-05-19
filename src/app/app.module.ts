@@ -8,9 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductAddComponent } from './components/product-add/product-add.component';
 
 // state management setup
 import { ProductState } from './states/product.state';
@@ -18,8 +15,7 @@ import { ProductState } from './states/product.state';
 @NgModule({
 	declarations: [
 		AppComponent,
-		routingComponents,
-		ProductAddComponent
+		routingComponents
 	],
 	imports: [
 		BrowserModule,
