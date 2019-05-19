@@ -4,7 +4,7 @@ import { ProductsService } from './products.service'
 @Component({
 	selector: 'app-product-list',
 	template: `
-		<div class="container" style="margin-top: 60px">
+		<div class="container">
 			<table class="table">
 				<thead>
 					<tr>
