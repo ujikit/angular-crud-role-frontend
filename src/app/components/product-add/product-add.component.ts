@@ -25,8 +25,8 @@ export class ProductAddComponent implements OnInit {
 		});
 	}
 
-	addProduct(name_product, price_product) {
-		this.store.dispatch(new AddProduct({ name_product, price_product }));
+	addProduct(id, name_product, price_product) {
+		this.store.dispatch(new AddProduct({ id, name_product, price_product }));
 	}
 
 	ngOnInit() {

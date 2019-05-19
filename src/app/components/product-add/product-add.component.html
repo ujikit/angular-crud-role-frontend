@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="form-group">
-        <button (click)="addProduct(name_product.value, price_product.value)"
+        <button (click)="addProduct( NULL, name_product.value, price_product.value)"
             class="btn btn-primary"
             [disabled]="angForm.pristine || angForm.invalid">Create User</button>
       </div>

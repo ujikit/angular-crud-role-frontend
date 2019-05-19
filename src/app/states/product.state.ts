@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Product } from '../models/products';
-import { FetchProduct, AddProduct } from '../actions/product.action';
+import { FetchProduct, AddProduct, DeleteProduct } from '../actions/product.action';
 import { ProductsService } from '../services/products.service'
 
 export class ProductStateModel {
@@ -27,6 +27,19 @@ export class ProductState {
 		const state = getState();
 		patchState({
 			products: [...state.products, payload]
+		});
+	}
+
+	@Action(DeleteProduct)
+	delete({ getState, setState, patchState }: StateContext<ProductStateModel>, { payload }: DeleteProduct) {
+		const state = getState();
+		// patchState({
+		// 	products: state.products.splice(payload.id, 1)
+		// });
+		const filteredArray = state.products.filter(item => item.id !== payload.id);
+		setState({
+			...state,
+			products: filteredArray,
 		});
 	}
 
