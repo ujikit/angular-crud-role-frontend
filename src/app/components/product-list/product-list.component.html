@@ -9,8 +9,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let product of all_product_data | async">
-				<th scope="row" class="text-center">no_expected</th>
+			<tr *ngFor="let product of all_product_data | async; index as i">
+				<th scope="row" class="text-center">{{i+1}}</th>
 				<td>{{product.name_product}}</td>
 				<td>Rp.{{product.price_product}},-</td>
 				<td class="text-center">

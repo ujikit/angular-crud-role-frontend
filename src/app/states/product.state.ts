@@ -1,6 +1,7 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Product } from '../models/products';
-import { AddProduct } from '../actions/product.action';
+import { FetchProduct, AddProduct } from '../actions/product.action';
+import { ProductsService } from '../services/products.service'
 
 export class ProductStateModel {
 	products: Product[];
@@ -14,6 +15,8 @@ export class ProductStateModel {
 })
 
 export class ProductState {
+	constructor(private _productsService: ProductsService) { }
+
 	@Selector()
 	static getProducts(state: ProductStateModel) {
 		return state.products;
@@ -26,4 +29,27 @@ export class ProductState {
 			products: [...state.products, payload]
 		});
 	}
+
+	@Action(FetchProduct)
+	fetch({ getState, patchState }: StateContext<ProductStateModel>, { payload }: FetchProduct) {
+		this._productsService.getAllProducts()
+			.subscribe(res => {
+				let product = res;
+				let product_data = product["data"];
+				let products = product_data.map(data => {
+					return {
+						id: data.id,
+						name_product: data.name_product,
+						price_product: data.price_product
+					}
+				})
+				return patchState({
+					products: [...products]
+				});
+			}),
+			(error => {
+				window.alert(error);
+			});
+	}
+
 }

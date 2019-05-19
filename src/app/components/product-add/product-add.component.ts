@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // state management setup
 import { Store } from '@ngxs/store';
-import { AddProduct } from '../../actions/product.action';
+import { FetchProduct, AddProduct } from '../../actions/product.action';
 
 @Component({
 	selector: 'app-product-add',
@@ -30,6 +30,7 @@ export class ProductAddComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.store.dispatch(new FetchProduct());
 	}
 
 }
