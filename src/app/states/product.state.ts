@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { Product } from '../product-list/products';
+import { Product } from '../models/products';
 import { AddProduct } from '../actions/product.action';
 
 export class ProductStateModel {

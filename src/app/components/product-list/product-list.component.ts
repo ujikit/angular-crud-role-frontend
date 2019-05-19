@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './products.service'
+import { ProductsService } from '../../services/products.service'
 
 // state management setup
 import { Store, Select } from '@ngxs/store';
-import { Product } from '../product-list/products';
+import { Product } from '../../models/products';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
 
-	public all_product_data = [];
 	public errorMsg;
 
 	all_product_data: Observable<Product>;
