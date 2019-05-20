@@ -5,6 +5,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,12 +22,15 @@ import { ProductState } from './states/product.state';
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
+		// state management
 		NgxsModule.forRoot([
 			ProductState
 		]),
 		NgxsReduxDevtoolsPluginModule.forRoot(),
 		NgxsLoggerPluginModule.forRoot(),
-		ReactiveFormsModule
+		// ./state management
+		ReactiveFormsModule,
+		NgbPaginationModule // bootstrap pagination
 	],
 	providers: [],
 	bootstrap: [AppComponent]

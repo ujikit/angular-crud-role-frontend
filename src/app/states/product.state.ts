@@ -1,16 +1,24 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { Product } from '../models/products';
+import { Product, Pagination } from '../models/products';
 import { FetchProduct, AddProduct, DeleteProduct } from '../actions/product.action';
 import { ProductsService } from '../services/products.service'
 
 export class ProductStateModel {
 	products: Product[];
+	items: Pagination[];
+	pageSize: Pagination;
+	all_page: any;
+	page: any;
 }
 
 @State<ProductStateModel>({
 	name: 'products',
 	defaults: {
-		products: []
+		products: [],
+		items: [],
+		pageSize: undefined,
+		all_page: [1,2],
+		page: [1,2]
 	}
 })
 
@@ -31,7 +39,7 @@ export class ProductState {
 	}
 
 	@Action(DeleteProduct)
-	delete({ getState, setState, patchState }: StateContext<ProductStateModel>, { payload }: DeleteProduct) {
+	delete({ getState, patchState }: StateContext<ProductStateModel>, { payload }: DeleteProduct) {
 		const state = getState();
 		const filteredArray = state.products.filter(item => item.id !== payload.id);
 		patchState({
